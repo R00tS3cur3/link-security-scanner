@@ -53,6 +53,7 @@ function App() {
       setError(null);
       setResult(null);
 
+      console.log('Attempting to fetch from:', `${API_BASE_URL}/scan`);
       const response = await fetch(`${API_BASE_URL}/scan`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
