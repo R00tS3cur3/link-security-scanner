@@ -1,0 +1,144 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * {
+    @apply box-border;
+  }
+
+  body {
+    @apply bg-cyber-dark text-white font-mono overflow-x-hidden;
+    background-image: 
+      linear-gradient(rgba(10, 14, 39, 0.95), rgba(10, 14, 39, 0.95)),
+      repeating-linear-gradient(
+        0deg,
+        transparent,
+        transparent 2px,
+        rgba(0, 255, 136, 0.03) 2px,
+        rgba(0, 255, 136, 0.03) 4px
+      );
+  }
+
+  #root {
+    @apply min-h-screen;
+  }
+}
+
+@layer components {
+  .cyber-grid {
+    background-image: 
+      linear-gradient(rgba(0, 255, 136, 0.1) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(0, 255, 136, 0.1) 1px, transparent 1px);
+    background-size: 50px 50px;
+  }
+
+  .cyber-border {
+    @apply border border-cyber-green/30 shadow-lg;
+    box-shadow: 
+      0 0 10px rgba(0, 255, 136, 0.1),
+      inset 0 0 10px rgba(0, 255, 136, 0.05);
+  }
+
+  .cyber-glow {
+    text-shadow: 
+      0 0 10px currentColor,
+      0 0 20px currentColor,
+      0 0 30px currentColor;
+  }
+
+  .btn-cyber {
+    @apply px-6 py-3 bg-cyber-green/10 border-2 border-cyber-green 
+           text-cyber-green font-bold uppercase tracking-wider
+           hover:bg-cyber-green/20 hover:shadow-lg
+           transition-all duration-300 rounded-none relative overflow-hidden;
+  }
+
+  .btn-cyber::before {
+    content: '';
+    @apply absolute inset-0 bg-cyber-green/20 -translate-x-full transition-transform duration-300;
+  }
+
+  .btn-cyber:hover::before {
+    @apply translate-x-0;
+  }
+
+  .input-cyber {
+    @apply w-full px-4 py-3 bg-cyber-darker border-2 border-cyber-green/30
+           text-cyber-green font-mono placeholder-cyber-green/40
+           focus:border-cyber-green focus:outline-none focus:shadow-lg
+           transition-all duration-300;
+  }
+
+  .card-cyber {
+    @apply bg-cyber-darker/80 backdrop-blur-sm cyber-border p-6 rounded-lg;
+  }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-cyber-darker;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-cyber-green/30 hover:bg-cyber-green/50;
+  border-radius: 4px;
+}
+
+/* Matrix rain effect */
+@keyframes matrix-rain {
+  0% {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(100vh);
+    opacity: 0;
+  }
+}
+
+.matrix-char {
+  animation: matrix-rain linear infinite;
+  color: #00ff88;
+  text-shadow: 0 0 8px #00ff88;
+}
+
+/* Radar scan effect */
+@keyframes radar-sweep {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.radar-sweep {
+  animation: radar-sweep 3s linear infinite;
+}
+
+/* Pulse effect */
+@keyframes pulse-ring {
+  0% {
+    transform: scale(0.8);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1.2);
+    opacity: 0;
+  }
+}
+
+.pulse-ring {
+  animation: pulse-ring 2s ease-out infinite;
+}

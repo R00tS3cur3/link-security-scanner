@@ -1,0 +1,25 @@
+{
+  "name": "link-security-scanner",
+  "version": "1.0.0",
+  "description": "URL Security Scanner with VirusTotal Integration",
+  "private": true,
+  "workspaces": [
+    "server",
+    "client"
+  ],
+  "scripts": {
+    "setup": "bash scripts/setup.sh",
+    "dev:server": "cd server && npm run dev",
+    "dev:client": "cd client && npm run dev",
+    "build:client": "cd client && npm run build",
+    "init-db": "cd server && npm run init-db"
+  },
+  "keywords": [
+    "security",
+    "url-scanner",
+    "virustotal",
+    "cybersecurity"
+  ],
+  "author": "",
+  "license": "MIT"
+}
