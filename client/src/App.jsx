@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import ReportPanel from './components/ReportPanel';
+import { API_BASE_URL } from './utils/constants';
 
 function App() {
   const [url, setUrl] = useState('');
@@ -17,7 +18,7 @@ function App() {
 
   const loadHistory = async () => {
     try {
-      const response = await fetch('http://localhost:5000/api/history');
+      const response = await fetch(`${API_BASE_URL}/history`);
       const data = await response.json();
       if (data.success && data.data && data.data.items) {
         setHistory(data.data.items);
@@ -29,7 +30,7 @@ function App() {
 
   const loadThreats = async () => {
     try {
-      const response = await fetch('http://localhost:5000/api/threats/top10');
+      const response = await fetch(`${API_BASE_URL}/threats/top10`);
       const data = await response.json();
       if (data.success && data.data && data.data.items) {
         setThreats(data.data.items);
@@ -52,7 +53,7 @@ function App() {
       setError(null);
       setResult(null);
 
-      const response = await fetch('http://localhost:5000/api/scan', {
+      const response = await fetch(`${API_BASE_URL}/scan`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ url })
@@ -79,7 +80,7 @@ function App() {
   const clearHistory = async () => {
     if (!confirm('ยืนยันการลบประวัติทั้งหมด?')) return;
     try {
-      await fetch('http://localhost:5000/api/history', { method: 'DELETE' });
+      await fetch(`${API_BASE_URL}/history`, { method: 'DELETE' });
       setHistory([]);
     } catch (err) {
       console.error('Failed to clear history:', err);
