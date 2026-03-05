@@ -22,7 +22,7 @@ export const THREAT_LEVELS = {
   }
 };
 
-export const API_BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000/api';
+export const API_BASE_URL = import.meta.env.VITE_API_URL || 'https://link-security-scanner.onrender.com/api';
 
 export const HISTORY_FILTERS = {
   ALL: 'all',
